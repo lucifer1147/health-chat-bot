@@ -1,0 +1,30 @@
+{"intents": [
+  {"tag": "error",
+    "patterns":  ["", "akjfkasfj", "jkasf"],
+    "responses":  ["Sorry, I didn't get that.", "Could you input that again?", "Sorry, I couldn't understand that. Mind Repeating it?"]
+  },
+  {"tag": "greetings",
+    "patterns": ["hello", "hey", "hi", "heya"],
+    "responses": ["Hello! How may I help?", "Heya!", "How may I help?", "Hi!"]
+  },
+  {"tag": "greetings_v2",
+    "patterns": ["whats up", "hows it going"],
+    "responses": ["Nothing much. Ask me a health related question and I'll try to answer."]
+  },
+  {"tag": "tell_about_disease",
+    "patterns": ["could you tell me more about", "tell me about", "what is", "what are the symptoms for", "what are some preventative measures for"],
+    "responses": [""]
+  },
+  {"tag": "predict_disease",
+    "patterns": ["do i have", "can you tell if i have", "can you tell if i suffer from"],
+    "responses": [""]
+  },
+  {"tag": "about_model",
+    "patterns": ["what are you", "what do you do", "how are you useful", "who are you", "what can you do"],
+    "responses": ["I am an AI chatbot that can help you with you medical queries. Try asking, \"Tell me about Cervical Spondylosis?\"", "Try typing: \"What is Fungal Infection?\" or something like that and you'll see.", "I can tell if you have a disease if you tell me your symptoms."]
+  },
+  {"tag": "about_creator",
+    "patterns":["who created you", "who is your creator"],
+    "responses": ["I was created as a Project for the ScienceFest 2023 of DPS Indirapuram by a team of 4 people. Namely: Aayush Singla, Atharva Gera, Sasmit Thakur, Riddhan"]
+  }
+]}
