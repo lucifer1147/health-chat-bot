@@ -9,7 +9,7 @@ import spacy
 nlp = spacy.load('en_core_web_sm')
 
 no_append_words = ['precaution', 'prevention', 'preventative', 'sign', 'symptom', 'treatment', 'vaccine', 'management']
-catLi_li = [('precaution', ['precaution', 'prevention', 'preventative']), ('symptoms', ['sign', 'symptom']), ('treatment', ['treatment', 'vaccine', 'management'])]
+catLi_li = [('precaution', ['precaution', 'prevention', 'preventative']), ('symptoms', ['sign', 'symptom']), ('treatments', ['treatment', 'vaccine', 'management'])]
 
 def get_asked(sent: str):
     doc=nlp(sent)
@@ -23,8 +23,8 @@ def get_asked(sent: str):
         disease_criterion = ['poss']
     elif 'nsubj' in toks:
         disease_criterion = ['pobj'] if 'pobj' in toks else ['nsubj']
-    elif 'its' in sent or 'them' in sent or 'their' in sent:
-        disease_asked = ['last one(s)']
+    elif 'it' in sent or 'them' in sent or 'their' in sent:
+        disease_asked = ['its']
     elif 'dobj' in toks and 'prep' in toks:
         disease_criterion = ['pobj']
 

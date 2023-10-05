@@ -16,6 +16,7 @@ if len(sys.argv) >= 2:
 
     elif sys.argv[1] in ['--train', '-t']:
         from AI_Model_Files.chatbotTrain import train
+        import AI_Model_Files.modelFunction
         train()
 
 else:
