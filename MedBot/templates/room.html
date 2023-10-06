@@ -56,15 +56,14 @@ body {
 </head>
 <body>
 
-<h2>{{room}} - DjChat</h2>
+<h2>{{ room }} - {{ bot_name }}</h2>
 
 <div id="display">
 
-<!-- <div class="container darker">
-  <b>T
-  om</b><p>Hello Everyone, How Are You Guys Doing?</p>
+<div class="container darker">
+  <b>MedBot</b><p>Hello {{ username }}! {{ default_msg }}</p>
   <span class="time-left">20th, April 2021</span>
-</div> -->
+</div>
 
 </div>
 
@@ -74,7 +73,7 @@ $(document).ready(function(){
 setInterval(function(){
     $.ajax({
         type: 'GET',
-        url : "/getMessages/{{room}}/",
+        url : "{{base_app}}/getMessages/{{room}}/",
         success: function(response){
             console.log(response);
             $("#display").empty();
@@ -145,7 +144,7 @@ setInterval(function(){
 
     $.ajax({
       type:'POST',
-      url:'/send',
+      url:'{{base_app}}/send',
       data:{
           username:$('#username').val(),
           room_id:$('#room_id').val(),

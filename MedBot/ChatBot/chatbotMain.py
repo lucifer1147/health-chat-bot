@@ -13,11 +13,10 @@ from nltk.stem import WordNetLemmatizer
 
 from keras.models import load_model
 
-from .similarityGetter import get_similarity
-from .modelFunction import pred_with_model
 from .getAsked import get_asked
 from .wikipediaFuncs import get_content
-from .symptomInput import get_feature_input
+
+# from modelFunction import pred_with_model
 
 end = time.time()
 
@@ -82,11 +81,18 @@ def get_response(intents_list, intents_json):
 
 
 diseases_asked_memory = []
+tag_li = []
 
-def get_output(inp: str):
+def get_output(inp: str, enterInNums=False):
     if inp.lower() not in ['quit', 'q']:
         intents_li = predict_class(inp.lower())
         response, tag = get_response(intents_li, intents)
+
+        if tag == 'agreement':
+            if tag_li[-1] == "predict_disease":
+                tag = "predict_disease"
+
+        tag_li.append(tag)
 
         if tag == "tell_about_disease":
             response = ""
@@ -105,16 +111,21 @@ def get_output(inp: str):
                 for cat in cats:
                     response += ". ".join(get_content(disease, cat)) + "\n\n"
 
-        if tag == "predict_disease":
-            features = get_feature_input()
-            predictions = pred_with_model(features)
+        # if tag == "predict_disease":
+            # response_i, i = get_feature_input(inp)
+            # response += "\n"+response_i
+            #
+            # if i == len(related_symptoms):
+            #     features = get_features()
+            #
+            #     predictions = pred_with_model(features)
+            #
+            #     if len(predictions) == 1:
+            #         response = f"\nYou most likely suffer from {predictions[0]}"
+            #     elif len(predictions) == 2:
+            #         response = f"\nYou most likely suffer from {predictions[0]} with otherwise a small chance of suffering from {predictions[-1]}"
+            #     else:
+            #         response = f"\nYou most likely suffer from {predictions[0]} with otherwise a small chance of suffering from {predictions[1:-1]} or {predictions[-1]}"
 
-            if len(predictions) == 1:
-                response = f"\nYou most likely suffer from {predictions[0]}"
-            elif len(predictions) == 2:
-                response = f"\nYou most likely suffer from {predictions[0]} with otherwise a small chance of suffering from {predictions[-1]}"
-            else:
-                response = f"\nYou most likely suffer from {predictions[0]} with otherwise a small chance of suffering from {predictions[1:-1]} or {predictions[-1]}"
-
-        return response
+        return response, tag
 

@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from ChatBot.models import Room, Message
 from django.http import HttpResponse, JsonResponse
 from .chatbotMain import get_output
-# from .modelFunction import pred_with_model
 # Create your views here.
+
 def home(request):
     return render(request, 'home.html')
 
@@ -13,7 +13,9 @@ def room(request, room):
     return render(request, 'room.html', {
         'username': username,
         'room': room,
-        'room_details': room_details
+        'room_details': room_details,
+        'default_msg': "This is MedBot. How may I help?",
+        'base_app': '/ChatBot'
     })
 
 def checkview(request):
@@ -21,11 +23,11 @@ def checkview(request):
     username = request.POST['username']
 
     if Room.objects.filter(name=room).exists():
-        return redirect('/'+room+'/?username='+username)
+        return redirect('/ChatBot/'+room+'/?username='+username)
     else:
         new_room = Room.objects.create(name=room)
         new_room.save()
-        return redirect('/'+room+'/?username='+username)
+        return redirect('/ChatBot/'+room+'/?username='+username)
 
 def send(request):
     message = request.POST['message']
@@ -35,9 +37,10 @@ def send(request):
     new_message = Message.objects.create(value=message, user=username, room=room_id)
     new_message.save()
 
-    bot_response = get_output(message)
+    bot_response, tag = get_output(message)
+
     bot_message = Message.objects.create(value=bot_response, user='MedBot', room=room_id)
-    return HttpResponse('Message sent successfully')
+    bot_message.save()
 
 def getMessages(request, room):
     room_details = Room.objects.get(name=room)
