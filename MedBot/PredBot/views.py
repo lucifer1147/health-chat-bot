@@ -7,7 +7,7 @@ from .modelFunction import pred_with_model
 
 
 def home(request):
-    return render(request, 'home.html', {'bot_name': 'PredBot'})
+    return render(request, 'home.html', {'bot_name': 'PredBot', 'cb_active': "", 'pb_active': 'active'})
 
 
 def instance(request, instance):
@@ -17,9 +17,10 @@ def instance(request, instance):
         'username': username,
         'room': instance,
         'room_details': instance_details,
-        'default_msg': "Please enter the corresponding numbers for the symptoms that apply to you in the following 16 categories as asked (Ex: 1, 2, 5 if they apply to you or just Enter None if nothing applies to you)",
         'base_app': "/PredBot",
-        'bot_name': "PredBot"
+        'bot_name': "PredBot",
+        'cb_active': "",
+        'pb_active': 'active'
     })
 
 
@@ -32,6 +33,11 @@ def checkview(request):
     else:
         new_instance = Instance.objects.create(name=instance)
         new_instance.save()
+
+        message = f"Hey {username}!\n"+"Please enter the corresponding numbers for the symptoms that apply to you in the following 16 categories as asked (Ex: 1, 2, 5 if they apply to you or just Enter None if nothing applies to you)"
+
+        default_message = Message.objects.create(value=message, user="MedBot", instance=new_instance.id)
+        default_message.save()
         return redirect('/PredBot/'+instance+'/?username='+username)
 
 
@@ -45,19 +51,20 @@ def send(request):
 
     bot_response, i = get_feature_input(message)
 
-    if i == len(related_symptoms)+1:
+    if i >= len(related_symptoms)+1:
         features = get_features()
         predictions = pred_with_model(features)
 
+        print(features, predictions)
+
         if len(predictions) == 1:
-            response = f"\nYou most likely suffer from {predictions[0]}"
+            bot_response = f"\nYou most likely suffer from {predictions[0]}"
         elif len(predictions) == 2:
-            response = f"\nYou most likely suffer from {predictions[0]} with otherwise a small chance of suffering from {predictions[-1]}"
+            bot_response = f"\nYou most likely suffer from {predictions[0]} with otherwise a small chance of suffering from {predictions[-1]}"
         else:
-            response = f"\nYou most likely suffer from {predictions[0]} with otherwise a small chance of suffering from {', '.join(predictions[1:-1])} or {predictions[-1]}"
+            bot_response = f"\nYou most likely suffer from {predictions[0]} with otherwise a small chance of suffering from {', '.join(predictions[1:-1])} or {predictions[-1]}"
 
-        bot_response = response
-
+        bot_response += "\nThe process will keep repeating, you may leave if your query has been resolved."
     bot_message = Message.objects.create(value=bot_response, user='MedBot', instance=instance_id)
     bot_message.save()
 
