@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('ChatBot/', include('ChatBot.urls')),
     path('PredBot/', include('PredBot.urls')),
-    path('', views.index)
+    path('', views.index),
+    path('about/', views.about)
 ]

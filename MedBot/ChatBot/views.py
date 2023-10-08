@@ -56,6 +56,7 @@ def send(request):
     bot_message = Message.objects.create(value=bot_response, user='MedBot', room=room_id)
     bot_message.save()
 
+    return HttpResponse("Success!")
 
 def getMessages(request, room):
     room_details = Room.objects.get(name=room)
