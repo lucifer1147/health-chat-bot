@@ -34,7 +34,7 @@ The chatbot then performs a specific action which is pretty self-explanatory.
 
   - COMMANDS:
       -r, --run      Run the specified bot
-      -t, --train    Train the specified bot[^5]
+      -t, --train    Train the specified bot[^4]
 
   - BOT-NAME:
       cb, chatbot    The ChatBot model based on BOW deep learning Model.
