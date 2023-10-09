@@ -15,7 +15,7 @@ BOT-NAME:
     pb, predbot    The PredBot model based on a Voting Classifier.
     
 OPTIONS:
-    --time         If set to 1, outputs the time take to load each file in a model.
+    --time         If set to 1, outputs the time taken to load each file in a model.
     --data-dir     Used to specify the data directory for training the predbot model 
 
 """
