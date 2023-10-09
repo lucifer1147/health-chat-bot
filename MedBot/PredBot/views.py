@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Instance, Message
 from django.http import HttpResponse, JsonResponse
 from .symptomInput import get_feature_input, related_symptoms, get_features
-from .modelFunction import pred_with_model
+from .modelFunction import pred_with_model, load_model
 # Create your views here.
 
 
@@ -27,6 +27,9 @@ def instance(request, instance):
 def checkview(request):
     instance = request.POST['room_name']
     username = request.POST['username']
+
+    global model, labelEnc, diseases
+    model, labelEnc, diseases = load_model('pb_views')
 
     if Instance.objects.filter(name=instance).exists():
         return redirect('/PredBot/'+instance+'/?username='+username)
@@ -53,7 +56,7 @@ def send(request):
 
     if i >= len(related_symptoms)+1:
         features = get_features()
-        predictions = pred_with_model(features)
+        predictions = pred_with_model(features, model, labelEnc, diseases)
 
         print(features, predictions)
 

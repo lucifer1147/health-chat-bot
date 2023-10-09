@@ -20,7 +20,7 @@ from .wikipediaFuncs import get_content
 
 end = time.time()
 
-if '--no-time' not in sys.argv:
+if '--time=1' in sys.argv:
     print(f"Total time taken: {round(end-start)/10}s")
 
 dirname = os.path.dirname(__file__)

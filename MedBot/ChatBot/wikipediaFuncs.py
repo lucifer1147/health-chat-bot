@@ -1,7 +1,7 @@
 import sys
 import time
 start = time.time()
-if '--no-time' not in sys.argv:
+if '--time=1' in sys.argv:
     print("Loading wikipediaFuncs.py...", end="\t")
 
 import os
@@ -64,5 +64,5 @@ def get_content(name_disease: str, cat: str):
 
 
 end = time.time()
-if '--no-time' not in sys.argv:
+if '--time=1' in sys.argv:
     print(f"Loaded wikipediaFuncs.py in {round(end-start)/10}s")

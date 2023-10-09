@@ -2,7 +2,7 @@ import sys
 import time
 
 start = time.time()
-if '--no-time' not in sys.argv:
+if '--time=1' in sys.argv:
     print("Loading symptomInput.py...", end="\t")
 
 import os
@@ -105,5 +105,5 @@ def get_features():
 
 
 end = time.time()
-if '--no-time' not in sys.argv:
+if '--time=1' in sys.argv:
     print(f"Loaded symptomInput.py in {round(end - start) / 10}s")

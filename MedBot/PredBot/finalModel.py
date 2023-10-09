@@ -10,19 +10,11 @@ from sklearn.preprocessing import LabelEncoder
 
 import pandas as pd
 import os
+import joblib
 
 dirname = os.path.dirname(__file__)
 
-train_data = pd.read_csv(os.path.join(dirname, './dataSet/Training.csv'))
-X = train_data.iloc[:, :-2]
-y = train_data.iloc[:, -2]
-
-labelEnc = LabelEncoder()
-labelEnc.fit(y)
-y = labelEnc.transform(y)
-
-X = np.array(X)
-y = np.array(y)
+data_path_default = os.path.join(dirname, './dataSet/Training.csv')
 
 
 class Center(BaseEstimator, TransformerMixin):
@@ -38,17 +30,43 @@ class Center(BaseEstimator, TransformerMixin):
         return X_transformed
 
 
-votingClf = VotingClassifier(estimators=[
-    ('SVC', SVC(probability=True)),
-    ('DecisionTree', DecisionTreeClassifier(max_leaf_nodes=10)),
-    ('LogisticRegressor', LogisticRegression()),
-], voting='soft')
+def fitModel(data_path=data_path_default):
+    global final_pipeline, labelEnc
 
-final_pipeline = Pipeline([
-    ('Center', Center()),
-    ('kPCA', KernelPCA(n_components=60, kernel='rbf', gamma=0.05)),
-    ('VotingClf', votingClf),
-])
+    data = pd.read_csv(data_path)
 
-final_pipeline.fit(X, y)
+    X = data.iloc[:, :-2]
+    y = data.iloc[:, -2]
 
+    labelEnc = LabelEncoder()
+    labelEnc.fit(y)
+    y = labelEnc.transform(y)
+
+    X = np.array(X)
+    y = np.array(y)
+
+    votingClf = VotingClassifier(estimators=[
+        ('SVC', SVC(probability=True)),
+        ('DecisionTree', DecisionTreeClassifier(max_leaf_nodes=10)),
+        ('LogisticRegressor', LogisticRegression()),
+    ], voting='soft')
+
+    final_pipeline = Pipeline([
+        ('Center', Center()),
+        ('kPCA', KernelPCA(n_components=60, kernel='rbf', gamma=0.05)),
+        ('VotingClf', votingClf),
+    ])
+
+    final_pipeline.fit(X, y)
+    return final_pipeline, labelEnc
+
+
+def modelDump(association, final_pipeline, labelEnc):
+    pipeline_name = f'final_pipeline_{association}.joblib'
+    labelEnc_name = f'labelEnc_{association}.joblib'
+
+    with open(os.path.join(dirname, f'Model/{pipeline_name}'), 'wb') as fl:
+        joblib.dump(final_pipeline, fl)
+
+    with open(os.path.join(dirname, f'Model/{labelEnc_name}'), 'wb') as fl:
+        joblib.dump(labelEnc, fl)

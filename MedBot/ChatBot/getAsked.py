@@ -1,7 +1,7 @@
 import sys
 import time
 start = time.time()
-if '--no-time' not in sys.argv:
+if '--time=1' in sys.argv:
     print("Loading getAsked.py...", end="\t")
 
 import spacy
@@ -61,5 +61,5 @@ def get_asked(sent: str):
     return disease_asked, cat_asked
 
 end = time.time()
-if '--no-time' not in sys.argv:
+if '--time=1' in sys.argv:
     print(f"Loaded getAsked.py in {round(end-start)/10}s")
