@@ -22,14 +22,13 @@ OPTIONS:
 
 
 
-
 if len(sys.argv) > 1:
     if list(sys.argv[1].split("="))[0] in ['-r', '--run']:
         try:
             file = list(sys.argv[1].split("="))[1]
         except IndexError:
             print(f"Enter the file option you want to run.\nEx: {sys.argv[1]}=cb or {sys.argv[1]}=pb")
-            quit()
+
 
         if file.lower() in ['cb', 'chatbot']:
             from ChatBot.chatbotMain import get_output
@@ -43,7 +42,7 @@ if len(sys.argv) > 1:
 
                 else:
                     print("Quiting...")
-                    quit()
+
 
         elif file.lower() in ['pb', 'predbot']:
             from PredBot.symptomInput import get_feature_input, get_features, related_symptoms
@@ -68,23 +67,22 @@ if len(sys.argv) > 1:
                         bot_response = f"\nYou most likely suffer from {predictions[0]} with otherwise a small chance of suffering from {', '.join(predictions[1:-1])} or {predictions[-1]}"
 
                     print(bot_response)
-                    quit()
+
 
                 print(bot_response)
 
-    elif sys.argv[1] in ['-t', '--train']:
+    elif list(sys.argv[1].split("="))[0] in ['-t', '--train']:
         try:
             file = list(sys.argv[1].split("="))[1]
         except IndexError:
             print(f"Enter the file option you want to run.\nEx: {sys.argv[1]}=cb or {sys.argv[1]}=pb")
-            quit()
 
         if file.lower() in ['cb', 'chatbot']:
             from ChatBot.chatbotTrain import train
 
             print("Training the chatbot...")
             train()
-            quit()
+            
 
         elif file.lower() in ['pb', 'predbot']:
             from PredBot.finalModel import fitModel, modelDump
@@ -92,7 +90,7 @@ if len(sys.argv) > 1:
             print("Fitting the Model...")
             final_pipeline, labelEnc = fitModel()
             modelDump('main_py', final_pipeline, labelEnc)
-            quit()
+            
 
 else:
     print("This is the command line utility for MedBot."+options)

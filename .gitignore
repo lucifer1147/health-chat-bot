@@ -230,3 +230,4 @@ cython_debug/
 #.idea/
 
 /corpora/
+/.idea/workspace.xml

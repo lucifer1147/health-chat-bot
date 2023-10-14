@@ -20,18 +20,20 @@
 
  <link rel="apple-touch-icon" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/apple-touch-icon.png"
        sizes="180x180">
- {# <link rel="icon" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/favicon-32x32.png" sizes="32x32"#}
- {#       type="image/png">#}
- {# <link rel="icon" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/favicon-16x16.png" sizes="16x16"#}
- {#       type="image/png">#}
  <link rel="manifest" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/manifest.json">
  <link rel="mask-icon" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/safari-pinned-tab.svg"
        color="#7952b3">
- {# <link rel="icon" href="https://getbootstrap.com/docs/5.0/assets/img/favicons/favicon.ico">#}
-
  <link href="{% static 'stylesheets/index-style.css' %}" rel="stylesheet">
 
  <style>
+     body {
+         background: url("{% static 'images/BG_INDEX.jpg' %}") no-repeat center center fixed;
+         -webkit-background-size: cover;
+         -moz-background-size: cover;
+         -o-background-size: cover;
+         background-size: cover;
+     }
+
      .bd-placeholder-img {
          font-size: 1.125rem;
          text-anchor: middle;
@@ -45,44 +47,108 @@
              font-size: 3.5rem;
          }
      }
+
+     .b-example-divider {
+         width: 100%;
+         height: 3rem;
+         background-color: rgba(0, 0, 0, 0.1);
+         border: solid rgba(0, 0, 0, 0.15);
+         border-width: 1px 0;
+         box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+         inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+     }
+
+     .b-example-vr {
+         flex-shrink: 0;
+         width: 1.5rem;
+         height: 100vh;
+     }
+
+     .bi {
+         vertical-align: -0.125em;
+         fill: currentColor;
+     }
+
+     .nav-scroller {
+         position: relative;
+         z-index: 2;
+         height: 2.75rem;
+         overflow-y: hidden;
+     }
+
+     .nav-scroller .nav {
+         display: flex;
+         flex-wrap: nowrap;
+         padding-bottom: 1rem;
+         margin-top: -1px;
+         overflow-x: auto;
+         text-align: center;
+         white-space: nowrap;
+         -webkit-overflow-scrolling: touch;
+     }
+
+     .btn-bd-primary {
+         --bd-violet-bg: #712cf9;
+         --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+         --bs-btn-font-weight: 600;
+         --bs-btn-color: var(--bs-white);
+         --bs-btn-bg: var(--bd-violet-bg);
+         --bs-btn-border-color: var(--bd-violet-bg);
+         --bs-btn-hover-color: var(--bs-white);
+         --bs-btn-hover-bg: #6528e0;
+         --bs-btn-hover-border-color: #6528e0;
+         --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+         --bs-btn-active-color: var(--bs-btn-hover-color);
+         --bs-btn-active-bg: #5a23c8;
+         --bs-btn-active-border-color: #5a23c8;
+     }
+
+     .bd-mode-toggle {
+         z-index: 1500;
+     }
+
+     .bd-mode-toggle .dropdown-menu .active .bi {
+         display: block !important;
+     }
  </style>
 
 </head>
 
 
-<body class="d-flex h-100 text-center text-white bg-dark">
+<body class="d-flex h-100 text-center text-white">
 
 <div class="cover-container mx-auto">
- <header class="mb-auto">
-  <div>
-   <nav class="navbar nav-masthead fixed-top justify-content-center float-md-end" id="main-nav">
-    <a class="nav-link" aria-current="page" href="#intro">Home</a>
-    <a class="nav-link" aria-current="page" href="#bot-container">MedBot</a>
-    <a class="nav-link" aria-current="page" href="#team">The Team</a>
-   </nav>
-  </div>
+ <header class="mb-auto mr-3">
+  <nav class="navbar nav-masthead fixed-top bg-body-tertiary justify-content-center float-md-end" id="main-nav">
+   <a class="nav-link"></a><a class="nav-link"></a><a class="nav-link"></a><a class="nav-link"></a><a
+    class="nav-link"></a>
+   <a class="nav-link" aria-current="page" href="#"><b>Home</b></a>
+   <a class="nav-link" aria-current="page" href="#bot-container"><b>MedBot</b></a>
+   <a class="nav-link" aria-current="page" href="#team"><b>The Team</b></a>
+  </nav>
  </header>
 
  <main class="mx-auto" data-bs-spy="scroll">
   <div data-bs-spy="scroll" data-bs-target="#main-nav" data-bs-root-margin="0px 0px -40%"
-       data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
+       data-bs-smooth-scroll="true" class="scrollspy-example p-3 rounded-2" tabindex="0">
    <div class="container px-4 py-5 my-5" id="intro">
-    <h2 class="pb-2 border-bottom">Introducing MedBot</h2>
+    <h2 class="pb-2 border-bottom"><strong>Introducing MedBot</strong></h2>
 
     <div class="row row-cols-1 row-cols-md-2 align-items-md-center g-5 py-5">
      <div class="col d-flex flex-column align-items-center gap-2">
-      <h2 class="fw-bold text-body-emphasis">Left-aligned title explaining these awesome features</h2>
+      <h2 class="fw-bold text-body-emphasis">What MedBot is and How it Functions</h2>
       <p class="text-body-secondary">Paragraph of text beneath the heading to explain the heading. We'll add onto it
        with
        another sentence and probably just keep going until we run out of words.</p>
-      <a href="#bot-container" class="btn btn-lg btn-secondary fw-bold border-white bg-white">Let's Go!</a>
+      <a href="#bot-container" class="btn btn-lg btn-light fw-bold border-white bg-white">Let's Go!</a>
      </div>
 
      <div class="col">
       <div class="row row-cols-1 row-cols-sm-2 g-4">
        <div class="col d-flex flex-column gap-2">
         <div
-          class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-dark bg-gradient fs-4 rounded-3">
+          class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-light bg-gradient fs-4 rounded-3">
          <svg class="bi" width="1em" height="1em">
           <use xlink:href="#collection"/>
          </svg>
@@ -93,7 +159,7 @@
 
        <div class="col d-flex flex-column gap-2">
         <div
-          class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-dark bg-gradient fs-4 rounded-3">
+          class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-light bg-gradient fs-4 rounded-3">
          <svg class="bi" width="1em" height="1em">
           <use xlink:href="#gear-fill"/>
          </svg>
@@ -104,7 +170,7 @@
 
        <div class="col d-flex flex-column gap-2">
         <div
-          class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-dark bg-gradient fs-4 rounded-3">
+          class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-light bg-gradient fs-4 rounded-3">
          <svg class="bi" width="1em" height="1em">
           <use xlink:href="#speedometer"/>
          </svg>
@@ -115,7 +181,7 @@
 
        <div class="col d-flex flex-column gap-2">
         <div
-          class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-dark bg-gradient fs-4 rounded-3">
+          class="feature-icon-small d-inline-flex align-items-center justify-content-center text-bg-light bg-gradient fs-4 rounded-3">
          <svg class="bi" width="1em" height="1em">
           <use xlink:href="#table"/>
          </svg>

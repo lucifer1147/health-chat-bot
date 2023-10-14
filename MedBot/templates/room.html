@@ -1,10 +1,10 @@
 {% load static %}
 
 <!DOCTYPE html>
-<html>
+<html data-bs-theme="light">
 <head>
  <meta name="viewport" content="width=device-width, initial-scale=1">
- <title>{{ bot_name }}</title>
+ <title>{{ room }} - {{ bot_name }}</title>
 
  <link rel="stylesheet" href="{% static 'stylesheets/style.css' %}">
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -12,6 +12,15 @@
  <script src="https://code.jquery.com/jquery-3.1.1.min.js"
          integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
 
+ <style>
+     body {
+         background: url("{% static 'images/BG_INDEX.jpg' %}") no-repeat center center fixed;
+         -webkit-background-size: cover;
+         -moz-background-size: cover;
+         -o-background-size: cover;
+         background-size: cover;
+     }
+ </style>
 </head>
 <body>
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
@@ -33,29 +42,6 @@
      <a class="nav-link {{ pb_active }}" href="/PredBot">PredBot</a>
     </li>
    </ul>
-   <span>
-    <button class="btn btn-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
-            aria-controls="offcanvasExample">
-     <strong>The Team</strong>
-    </button>
-
-<div class="offcanvas offcanvas-start keyboard mx-auto" tabindex="-1" id="offcanvasExample"
-     aria-labelledby="offcanvasExampleLabel">
-  <div class="offcanvas-header">
-   <h5>The Team</h5>
-  </div>
-  <div class="mx-auto px-auto">
-   <h6 id="scrollspyHeading1">Aayush Singla</h6>
-   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, itaque?</p>
-   <h6 id="scrollspyHeading2">Sasmit Thakur</h6>
-   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, itaque?</p>
-   <h6 id="scrollspyHeading3">Atharva Gera</h6>
-   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, itaque?</p>
-   <h6 id="scrollspyHeading4">Fourth Member</h6>
-   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, itaque?</p>
-  </div>
-
-  </div>
   </div>
   </span>
  </div>

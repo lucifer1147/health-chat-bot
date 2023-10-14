@@ -23,5 +23,4 @@ urlpatterns = [
     path('ChatBot/', include('ChatBot.urls')),
     path('PredBot/', include('PredBot.urls')),
     path('', views.index),
-    path('about/', views.about)
 ]
