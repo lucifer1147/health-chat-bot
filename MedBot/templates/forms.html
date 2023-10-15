@@ -34,33 +34,72 @@
   </div>
  </nav>
 </header>
-<h2>Check the symptoms that apply:</h2>
-<form action="/PredBot/{{ step_next }}" class="form-control">
- <table class="table table-striped table-hover align-middle table-sm">
-  <thead>
-  <tr>
-   <th scope="col">checked</th>
-   <th scope="col" class="col-6">symptom</th>
-   <th scope="col" class="col-6">description</th>
-  </tr>
-  </thead>
-  <tbody class="table-group-division">
-  {% for name, display in nameLi %}
-   <tr>
-    <th scope="row"><input type="checkbox" class="form-check-input" name="{{ name }}" id="{{ name }}"></th>
-    <td><label class="form-label col-3" for="{{ name }}">&nbsp;<strong>{{ display }}</strong></label></td>
-    <td colspan="2"><input type="text" class="form-label col-8" value="{{ display }}"></td>
-   </tr>
-  {% endfor %}
-  </tbody>
- </table>
- <div class="py-1">
 
-  <input type="button" id="prev" class="btn btn-dark"><label for="prev"><a href="/PredBot"></a></label>
-  <input type="reset" value="Reset Selection" class="btn btn-dark">
-  <input type="submit" value="Save & Next" class="btn btn-dark">
- </div>
-</form>
+<main>
+ <h2>Check the symptoms that apply:</h2>
+
+ <form action="/PredBot/{{ step_next }}" class="form-control">
+
+  <div class="d-flex flex-row justify-content-sm-evenly px-5 mx-5 py-2 mb-2">
+   <a class="btn btn-primary" href="/PredBot/1">1</a>
+   <a class="btn btn-primary" href="/PredBot/2">2</a>
+   <a class="btn btn-primary" href="/PredBot/3">3</a>
+   <a class="btn btn-primary" href="/PredBot/4">4</a>
+   <a class="btn btn-primary" href="/PredBot/5">5</a>
+   <a class="btn btn-primary" href="/PredBot/6">6</a>
+   <a class="btn btn-primary" href="/PredBot/7">7</a>
+   <a class="btn btn-primary" href="/PredBot/8">8</a>
+   <a class="btn btn-primary" href="/PredBot/9">9</a>
+   <a class="btn btn-primary" href="/PredBot/10">10</a>
+   <a class="btn btn-primary" href="/PredBot/11">11</a>
+   <a class="btn btn-primary" href="/PredBot/12">12</a>
+   <a class="btn btn-primary" href="/PredBot/13">13</a>
+   <a class="btn btn-primary" href="/PredBot/14">14</a>
+   <a class="btn btn-primary" href="/PredBot/15">15</a>
+   <a class="btn btn-primary" href="/PredBot/16">16</a>
+  </div>
+
+  <div class="d-flex flex-row justify-content-sm-evenly mx-5 px-5 py-2 mb-2">
+   <a class="btn btn-dark" href="/PredBot/{{ step_before }}" id="prevBtn">Previous</a>
+   <input type="reset" value="Reset Selection" class="btn btn-dark">
+   <input type="submit" value="{{ next_value }}" class="btn btn-dark">
+  </div>
+
+  <table class="table table-striped table-hover table-bordered align-middle table-sm">
+   <thead>
+   <tr>
+    <th scope="col">#</th>
+    <th scope="col" class="col-6">Symptom Name</th>
+    <th scope="col" class="col-6">Short Description</th>
+   </tr>
+   </thead>
+
+   <tbody class="table-group-division">
+   {% for name, display in nameLi %}
+    <tr>
+     <th scope="row"><input type="checkbox" class="form-check-input" name="{{ name }}" id="{{ name }}"></th>
+     <td><label class="form-label col-3" for="{{ name }}">&nbsp;<strong>{{ display }}</strong></label></td>
+     <td colspan="2"><input type="text" readonly class="form-label col-8" value="{{ display }}"></td>
+    </tr>
+   {% endfor %}
+
+   </tbody>
+
+  </table>
+
+ </form>
+</main>
+
+<script>
+    {#function redirect(step) {#}
+    {#    window.location = `/PredBot/${step}`;#}
+    {
+    #}#}
+    {#document.getElementById("prevBtn").addEventListener("click", redirect({{ step_before }}));#}
+    {#document.getElementById("nxtBtn").addEventListener("click", redirect({{ step_next }}));#}
+
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>

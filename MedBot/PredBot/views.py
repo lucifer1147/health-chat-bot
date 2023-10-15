@@ -11,6 +11,7 @@ nameLi = list(related_symptoms_names.values())
 
 feats = list([] for _ in range(len(displayLi)))
 
+
 def intro(request):
     return redirect('/PredBot/0')
 
@@ -18,16 +19,18 @@ def intro(request):
 def home(request, step):
     global feats, displayLi, nameLi
     # return render(request, 'home.html', {'bot_name': 'PredBot', 'cb_active': "", 'pb_active': 'active'})
+    next_value = 'Next' if step != 16 else 'Get Results'
 
     if step > 0:
         temp_feats = []
         for name in nameLi[step - 1]:
             if request.GET.get(name) == 'on':
                 temp_feats.append(name)
-        feats[step-1] = temp_feats
 
         if step <= 16:
-            return render(request, 'forms.html', {'nameLi': zip(nameLi[step], displayLi[step]), 'step_next': step + 1, 'step_before': step - 1})
+            feats[step - 1] = temp_feats
+            return render(request, 'forms.html', {'nameLi': zip(nameLi[step], displayLi[step]), 'step_next': step + 1,
+                                                  'step_before': step - 1, 'pb_active': 'active', 'next_value': next_value})
         else:
             feats_temp = []
             for li in feats:
@@ -46,6 +49,7 @@ def home(request, step):
                 bot_response = f"\nYou most likely suffer from {predictions[0]} with otherwise a small chance of suffering from {', '.join(predictions[1:-1])} or {predictions[-1]}"
 
             bot_response += "\n<br>If you wish to know more about the disease, You may visit <a href=\"/ChatBot\">ChatBot<a> and resolve any further queries there."
+            feats = list([] for _ in range(len(displayLi)))
             return render(request, 'result.html', {'content': bot_response, 'pb_active': 'active'})
     else:
         return render(request, 'formhome.html')
@@ -99,8 +103,6 @@ def send(request):
     if i >= len(related_symptoms) + 1:
         features = get_features()
         predictions = pred_with_model(features, model, labelEnc, diseases)
-
-        print(features, predictions)
 
         if len(predictions) == 1:
             bot_response = f"\nYou most likely suffer from {predictions[0]}"
