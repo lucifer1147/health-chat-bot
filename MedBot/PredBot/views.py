@@ -3,38 +3,53 @@ from .models import Instance, Message
 from django.http import HttpResponse, JsonResponse
 from .symptomInput import get_feature_input, related_symptoms, get_features, related_symptoms_names
 from .modelFunction import pred_with_model, load_model
+
 # Create your views here.
 
-feats = []
+displayLi = list(related_symptoms_names.values())
+nameLi = list(related_symptoms_names.values())
+
+feats = list([] for _ in range(len(displayLi)))
 
 def intro(request):
     return redirect('/PredBot/0')
 
+
 def home(request, step):
+    global feats, displayLi, nameLi
     # return render(request, 'home.html', {'bot_name': 'PredBot', 'cb_active': "", 'pb_active': 'active'})
-    displayLi = list(related_symptoms_names.values())
-    nameLi = list(related_symptoms_names.values())
 
-    for name in nameLi[step - 1]:
-        if request.GET.get(name) == 'on':
-            feats.append(name)
+    if step > 0:
+        temp_feats = []
+        for name in nameLi[step - 1]:
+            if request.GET.get(name) == 'on':
+                temp_feats.append(name)
+        feats[step-1] = temp_feats
 
-    if step <= 16:
-        return render(request, 'forms.html', {'nameLi': zip(nameLi[step], displayLi[step]), 'step_next': step+1})
-    else:
-        features = get_features(feats)
-        model, labelEnc, diseases = load_model('pb_views')
-        predictions = pred_with_model(features, model, labelEnc, diseases)
-
-        if len(predictions) == 1:
-            bot_response = f"\nYou most likely suffer from {predictions[0]}"
-        elif len(predictions) == 2:
-            bot_response = f"\nYou most likely suffer from {predictions[0]} with otherwise a small chance of suffering from {predictions[-1]}"
+        if step <= 16:
+            return render(request, 'forms.html', {'nameLi': zip(nameLi[step], displayLi[step]), 'step_next': step + 1, 'step_before': step - 1})
         else:
-            bot_response = f"\nYou most likely suffer from {predictions[0]} with otherwise a small chance of suffering from {', '.join(predictions[1:-1])} or {predictions[-1]}"
+            feats_temp = []
+            for li in feats:
+                feats_temp.extend(li)
+            feats = feats_temp
 
-        bot_response += "\n<br>If you wish to know more about the disease, You may visit <a href=\"/ChatBot\">ChatBot<a> and resolve any further queries there."
-        return render(request, 'result.html', {'content': bot_response})
+            features = get_features(feats)
+            model, labelEnc, diseases = load_model('pb_views')
+            predictions = pred_with_model(features, model, labelEnc, diseases)
+
+            if len(predictions) == 1:
+                bot_response = f"\nYou most likely suffer from {predictions[0]}"
+            elif len(predictions) == 2:
+                bot_response = f"\nYou most likely suffer from {predictions[0]} with otherwise a small chance of suffering from {predictions[-1]}"
+            else:
+                bot_response = f"\nYou most likely suffer from {predictions[0]} with otherwise a small chance of suffering from {', '.join(predictions[1:-1])} or {predictions[-1]}"
+
+            bot_response += "\n<br>If you wish to know more about the disease, You may visit <a href=\"/ChatBot\">ChatBot<a> and resolve any further queries there."
+            return render(request, 'result.html', {'content': bot_response, 'pb_active': 'active'})
+    else:
+        return render(request, 'formhome.html')
+
 
 def instance(request, instance):
     return render(request, 'forms.html')
@@ -59,16 +74,16 @@ def checkview(request):
     model, labelEnc, diseases = load_model('pb_views')
 
     if Instance.objects.filter(name=instance).exists():
-        return redirect('/PredBot/'+instance+'/?username='+username)
+        return redirect('/PredBot/' + instance + '/?username=' + username)
     else:
         new_instance = Instance.objects.create(name=instance)
         new_instance.save()
 
-        message = f"Hey {username}!\n"+"Please enter the corresponding numbers for the symptoms that apply to you in the following 16 categories as asked (Ex: 1, 2, 5 if they apply to you or just Enter None if nothing applies to you)"
+        message = f"Hey {username}!\n" + "Please enter the corresponding numbers for the symptoms that apply to you in the following 16 categories as asked (Ex: 1, 2, 5 if they apply to you or just Enter None if nothing applies to you)"
 
         default_message = Message.objects.create(value=message, user="MedBot", instance=new_instance.id)
         default_message.save()
-        return redirect('/PredBot/'+instance+'/?username='+username)
+        return redirect('/PredBot/' + instance + '/?username=' + username)
 
 
 def send(request):
@@ -81,7 +96,7 @@ def send(request):
 
     bot_response, i = get_feature_input(message)
 
-    if i >= len(related_symptoms)+1:
+    if i >= len(related_symptoms) + 1:
         features = get_features()
         predictions = pred_with_model(features, model, labelEnc, diseases)
 
