@@ -1,9 +1,9 @@
 {% load static %}
 
 <!doctype html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" data-bs-theme="light">
 <head>
- <script src="https://getbootstrap.com/docs/5.3/assets/js/color-modes.js"></script>
+{# <script src="https://getbootstrap.com/docs/5.3/assets/js/color-modes.js"></script>#}
 
  <meta charset="utf-8">
  <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,25 +12,23 @@
  <meta name="generator" content="Hugo 0.118.2">
  <title>{{ bot_name }}</title>
 
- <link rel="canonical" href="https://getbootstrap.comhttps://getbootstrap.com/docs/5.3/examples/sign-in/">
+ <link rel="icon" type="image/x-icon" href="{% static 'images/favicon/favicon.ico' %}">
+{# <link rel="canonical" href="https://getbootstrap.comhttps://getbootstrap.com/docs/5.3/examples/sign-in/">#}
+{# <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">#}
+ <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
-
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-
- <link href="https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet"
-       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
  <!-- Favicons -->
- <link rel="apple-touch-icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/apple-touch-icon.png"
-       sizes="180x180">
-{# <link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32"#}
-{#       type="image/png">#}
-{# <link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16"#}
-{#       type="image/png">#}
- <link rel="manifest" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/manifest.json">
- <link rel="mask-icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/safari-pinned-tab.svg"
-       color="#712cf9">
-{# <link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon.ico">#}
+{# <link rel="apple-touch-icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/apple-touch-icon.png"#}
+{#       sizes="180x180">#}
+ {# <link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32"#}
+ {#       type="image/png">#}
+ {# <link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16"#}
+ {#       type="image/png">#}
+{# <link rel="manifest" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/manifest.json">#}
+{# <link rel="mask-icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/safari-pinned-tab.svg"#}
+{#       color="#712cf9">#}
+ {# <link rel="icon" href="https://getbootstrap.com/docs/5.3/assets/img/favicons/favicon.ico">#}
  <meta name="theme-color" content="#712cf9">
 
 
@@ -42,6 +40,7 @@
          -o-background-size: cover;
          background-size: cover;
      }
+
      .bd-placeholder-img {
          font-size: 1.125rem;
          text-anchor: middle;
@@ -144,52 +143,77 @@
     d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
  </symbol>
 </svg>
+<div class="container">
+ <header>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+   <div class="container-fluid">
+    <b class="navbar-brand">MedBot</b>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+     <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+     <ul class="nav nav-pills justify-content-center">
+      <li class="nav-item">
+       <a class="nav-link" href="/">Home</a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link {{ cb_active }}" href="/ChatBot">ChatBot</a>
+      </li>
+      <li class="nav-item">
+       <a class="nav-link {{ pb_active }}" href="/PredBot">PredBot</a>
+      </li>
+     </ul>
+    </div>
+   </div>
+  </nav>
+ </header>
 
-<header>
- <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-   <b class="navbar-brand">MedBot</b>
-   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-   </button>
-   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="nav nav-pills justify-content-center">
-     <li class="nav-item">
-      <a class="nav-link" href="/">Home</a>
-     </li>
-     <li class="nav-item">
-      <a class="nav-link {{ cb_active }}" href="/ChatBot">ChatBot</a>
-     </li>
-     <li class="nav-item">
-      <a class="nav-link {{ pb_active }}" href="/PredBot">PredBot</a>
-     </li>
-    </ul>
+ <main class="form-signin m-auto">
+  <form id="post-form" method="POST" action="checkview">
+   {% csrf_token %}
+   <h1 class="h4 mb-3 text-dark fw-normal"><strong class="text-light">Please enter the details to join an
+    Instance</strong></h1>
+
+   <div class="form-floating">
+    <input type="text" class="form-control" id="room_name" name="room_name" placeholder="">
+    <label for="room">Instance Name</label>
+   </div>
+   <div class="form-floating">
+    <input type="text" class="form-control" id="username" name="username" placeholder="">
+    <label for="username">Username</label>
+   </div>
+
+   <button class="btn btn-primary w-100 py-2" type="submit">Join Instance</button>
+  </form>
+ </main>
+ <footer class="text-dark w-50 mx-auto px-auto">
+  <div class="accordion" id="chat-bot-about">
+   <div class="accordion-item">
+    <h2 class="accordion-header">
+     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-chat-bot-about"
+             aria-expanded="false" aria-controls="collapseOne">
+      <strong>About ChatBot</strong>
+     </button>
+    </h2>
+    <div id="collapse-chat-bot-about" class="accordion-collapse collapse" data-bs-parent="#chat-bot-about">
+     <div class="accordion-body accordion-flush">
+      <strong>
+       ChatBot, a sophisticated and responsive virtual assistant designed to make health information easily accessible.
+       Built on advanced Artificial Neural Network (ANN) and Bag-of-Words (BOW) deep learning models using TensorFlow, our
+       ChatBot is the heart of MedBot's interactive experience. As the name implies, this intelligent conversational agent
+       accepts user inputs in the form of text and delivers tailored responses, addressing user health queries with precision
+       and empathy. From answering general health inquiries to providing personalized guidance, ChatBot is here to assist
+       you on your health journey with a seamless fusion of technology and human-like interaction.
+      </strong>
+     </div>
+    </div>
    </div>
   </div>
- </nav>
-</header>
+ </footer>
+</div>
 
-<main class="form-signin w-100 m-auto">
- <form id="post-form" method="POST" action="checkview">
-  {% csrf_token %}
-  <h1 class="h4 mb-3 text-dark fw-normal"><strong>Please enter the details</strong></h1>
-
-  <div class="form-floating">
-   <input type="text" class="form-control" id="room_name" name="room_name" placeholder="">
-   <label for="room">Instance Name</label>
-  </div>
-  <div class="form-floating">
-   <input type="text" class="form-control" id="username" name="username" placeholder="">
-   <label for="username">Username</label>
-  </div>
-
-  <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
- </form>
-</main>
-<script src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
+<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
 </body>
 </html>

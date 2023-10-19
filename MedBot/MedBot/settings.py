@@ -25,6 +25,7 @@ SECRET_KEY = 'django-insecure-osmunk7a#8!l$9jylm_@3hl31jg-5d@=_bnq#@=zmo51hmzqi$
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True # os.environ.get("DEBUG")
+TIME_ZONE = 'Asia/Kolkata'
 USE_TZ = True
 ALLOWED_HOSTS = [] # os.environ.get("ALLOWED_HOSTS").split(",")
 
@@ -39,11 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ChatBot',
-    'multiforloop',
     'PredBot',
-    # 'formtools',
-    # 'crispy_forms',
-    # 'PredBotForm',
 ]
 
 MIDDLEWARE = [

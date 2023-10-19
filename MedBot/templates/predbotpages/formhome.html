@@ -1,0 +1,107 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport"
+       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+ <link rel="icon" type="image/x-icon" href="{% static 'images/favicon/favicon.ico' %}">
+ <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+ <title>PredBot - Introduction</title>
+</head>
+<body>
+<header>
+ <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+   <b class="navbar-brand">MedBot</b>
+   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="nav nav-pills justify-content-center">
+     <li class="nav-item">
+      <a class="nav-link" href="/">Home</a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link {{ cb_active }}" href="/ChatBot">ChatBot</a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link {{ pb_active }}" href="/PredBot">PredBot</a>
+     </li>
+    </ul>
+   </div>
+  </div>
+ </nav>
+</header>
+
+
+<div class="mt-5 pt-5 px-5 mx-5">
+ <h5>Basic Instructions Regarding PredBot:</h5>
+ <ul>
+  <li>PredBot will take inputs in the format of a form.</li>
+  <li>The form will be 16 pages long in which you will be checking the symptoms that apply to you.</li>
+
+  <li>
+   There will be three action button:
+   <ul>
+    <li><strong>Next</strong>: This <strong>SAVES</strong> your choices made on that page and moves you on to the next.
+     It is necessary
+     that you Click this to save your choices if you decide to make any changes as no other option does that.
+    </li>
+    <li><strong>Previous</strong>: This moves you to the previous page and <strong>DOES NOT SAVE</strong> your choices.
+    </li>
+    <li><strong>Previous</strong>: This <strong>RESETS</strong> your choices for the active page. But, it <strong>DOES
+     NOT SAVE</strong> the resetted choices.
+    </li>
+    <li><strong>Get Results</strong>: This button will only be available on the 16th page and it takes you to the
+     results page.
+    </li>
+   </ul>
+  </li>
+
+  <li>There will also be a nav bar at the bottom of the page to indicate which page step you are on. You may navigate to
+   any other page from there
+  </li>
+
+ </ul>
+</div>
+
+<footer class="text-dark mx-5 px-5 my-3">
+ <div class="accordion" id="pred-bot-about">
+  <div class="accordion-item">
+   <h2 class="accordion-header">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapse-pred-bot-about"
+            aria-expanded="false" aria-controls="collapseOne">
+     <strong>About PredBot</strong>
+    </button>
+   </h2>
+   <div id="collapse-pred-bot-about" class="accordion-collapse collapse" data-bs-parent="#pred-bot-about">
+    <div class="accordion-body accordion-flush">
+     <strong>
+      This is PredBot, the proactive health companion within MedBot's arsenal. Designed to empower users with valuable
+      insights into their health, PredBot stands as a robust predictive force. Utilizing a powerful voting classifier
+      built with sci-kit learn, this intelligent system comes to life when users input their symptoms. PredBot analyzes
+      the data, employing a data-driven approach to inform users about potential diseases they might be facing. It's a
+      decisive step towards early awareness and informed decision-making, making PredBot an invaluable tool in your
+      health journey. Explore symptoms, discover possibilities, and take charge of your well-being with PredBot's
+      advanced predictive capabilities.
+     </strong>
+    </div>
+   </div>
+  </div>
+ </div>
+</footer>
+<div class="mx-5 px-5">
+ <a type="button" class="btn btn-primary" href="/PredBot/1">Let's Go!</a>
+</div>
+
+<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+</html>

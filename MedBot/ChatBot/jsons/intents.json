@@ -5,7 +5,7 @@
   },
   {"tag": "agreement",
     "patterns":["okay", "sure", "fine", "nice"],
-    "responses": ["Anything else"]
+    "responses": ["Anything else", "Anything else you would like?"]
   },
   {"tag": "greetings",
     "patterns": ["hello", "hey", "hi", "heya"],
@@ -16,19 +16,19 @@
     "responses": ["Nothing much. Ask me a health related question and I'll try to answer."]
   },
   {"tag": "tell_about_disease",
-    "patterns": ["could you tell me more about", "tell me about", "what is", "what are the symptoms for", "what are some preventative measures for"],
+    "patterns": ["could you tell me more about", "tell me about", "what is", "what are the symptoms for", "what are some preventative measures for", "what are its"],
     "responses": [""]
   },
   {"tag": "predict_disease",
     "patterns": ["do i have", "can you tell if i have", "can you tell if i suffer from", "1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17", "1, 3, 4", "none"],
-    "responses": ["For that you may visit <a href=\"/PredBot\">PredBot</a>"]
+    "responses": ["For that you may select PredBot from the above NavBar or visit <a href=\"/PredBot\">PredBot</a>"]
   },
   {"tag": "about_model",
     "patterns": ["what are you", "what do you do", "how are you useful", "who are you", "what can you do"],
     "responses": ["I am an AI chatbot that can help you with you medical queries. Try asking, \"Tell me about Cervical Spondylosis?\"", "Try typing: \"What is Fungal Infection?\" or something like that and you'll see.", "I can tell if you have a disease if you tell me your symptoms."]
   },
   {"tag": "about_creator",
-    "patterns":["who created you", "who is your creator"],
-    "responses": ["I was created as a Project for the ScienceFest 2023 of DPS Indirapuram by a team of 4 people. Namely: Aayush Singla, Atharva Gera, Sasmit Thakur, Riddhan"]
+    "patterns":["who created you", "who is your creator", "which team made you"],
+    "responses": ["I was created as a Project for the ScienceFest 2023 of DPS Indirapuram by a team of 4 people. Namely: Aayush Singla, Atharv Gera, Sasmit Thakur, Hridhaan"]
   }
 ]}

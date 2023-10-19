@@ -1,0 +1,162 @@
+{
+  "": [],
+  "skin": [
+    "Itching",
+    "Rashes On Skin",
+    "Nodal Skin Eruptions",
+    "Swollen Blood Vessels",
+    "Drying and Tingling Lips",
+    "Slurred Speech",
+    "Dyschromic Patches on Skin",
+    "Pus Filled Pimples",
+    "Black-Heads",
+    "Peeling of Skin",
+    "Blisters on Skin"
+  ],
+  "uncategorised": [
+    "Continuous Sneezing",
+    "Vomiting",
+    "Coughing",
+    "HIGH Fever",
+    "Breathlessness",
+    "Shivering",
+    "Dehydration",
+    "Sweating",
+    "Nausea",
+    "MILD Fever",
+    "Fluid Overload",
+    "Ulcers on Tongue",
+    "Abnormal Menstruation",
+    "Fluid Overload"
+  ],
+  "uncategorisedV2": [
+    "Phlegm",
+    "Mucoid Sputum",
+    "Rusty Sputum",
+    "Blood in Sputum"
+  ],
+  "body": [
+    "Shivering",
+    "Chills",
+    "Weight GAIN",
+    "Weight LOSS",
+    "Headache",
+    "Yellowish Skin",
+    "Back Pain",
+    "Cramps",
+    "Bruising",
+    "Weakness in one Side of Body",
+    "Internal Itching",
+    "Red Spots over Body"
+  ],
+  "nails": [
+    "Small Dents in Nails",
+    "Brittle Nails",
+    "Inflammatory Nails"
+  ],
+  "movement": [
+    "Loss in Balance",
+    "Unsteadiness",
+    "Spinning Movements",
+    "Altered Sensorium",
+    "Painful Walking",
+    "Scurrying"
+  ],
+  "muscles/joints": [
+    "Pain in Joints",
+    "Muscle Wasting",
+    "Fatigue",
+    "Muscle Weakness",
+    "Swelling Joints",
+    "Muscle Pain"
+  ],
+  "abdomen": [
+    "Stomach Pain",
+    "Acidity",
+    "Indigestion",
+    "Acute Liver Failure",
+    "Abdominal Pain",
+    "Swelling of Stomach",
+    "Pain in Chest",
+    "Fast Heart Rate",
+    "Obesity",
+    "Belly Pain",
+    "Stomach Bleeding",
+    "Distention of Abdomen"
+  ],
+  "eyes": [
+    "Sunken Eyes",
+    "Pain Behind the Eyes",
+    "Yellowing of Eyes",
+    "Blurred and Distorted Vision",
+    "Redness of Eyes",
+    "Puffy Face and Eyes",
+    "Watering from Eyes",
+    "Visual Disturbances"
+  ],
+  "limbs": [
+    "Swollen Extremities",
+    "Cold Hands and Feet",
+    "Weakness in Limbs",
+    "Knee Pain",
+    "Movement Stiffness",
+    "Swollen Legs",
+    "Prominent Veins on Calf"
+  ],
+  "facese": [
+    "Constipation",
+    "Diarrhea",
+    "Pain during Bowel Movements",
+    "Pain in Anal Region",
+    "Bloody Stool",
+    "Irritation in Anus",
+    "Hip joint Pain",
+    "Passage of Gasses"
+  ],
+  "urine": [
+    "Burning Micturition",
+    "Spotting Urination",
+    "Dark Urine",
+    "Yellow Urine",
+    "Bladder Discomfort",
+    "Foul Smell of Urine",
+    "Continuous feel of Urine",
+    "Polyuria"
+  ],
+  "behavioral": [
+    "Anxiety",
+    "Mood Swings",
+    "Restlessness",
+    "Lethargy",
+    "Loss of Appetite",
+    "Malaise",
+    "Dizziness",
+    "Excessive Hunger",
+    "Depression",
+    "Irritability",
+    "Increased Appetite",
+    "Lack of Concentration"
+  ],
+  "throat": [
+    "Patches in Throat",
+    "Swelled Lymph Nodes",
+    "Throat Irritation",
+    "Neck Pain",
+    "Enlarged Thyroid",
+    "Stiff Neck"
+  ],
+  "history": [
+    "Irregular Sugar Levels",
+    "Family History",
+    "Received Blood Transfusion",
+    "Received Unsterile Injections",
+    "History of Alcohol Consumption"
+  ],
+  "nose": [
+    "Pressure on Sinuses",
+    "Runny Noes",
+    "Congestion",
+    "Loss of Smell",
+    "Red Sore around Nose"
+  ]
+}

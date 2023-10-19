@@ -7,7 +7,7 @@ from .chatbotMain import get_output
 # Create your views here.
 
 def home(request):
-    return render(request, 'home.html', {'bot_name': 'ChatBot', 'cb_active': 'active', 'pb_active': ""})
+    return render(request, 'chatbotpages/home.html', {'bot_name': 'ChatBot', 'cb_active': 'active', 'pb_active': ""})
 
 
 def room(request, room):
@@ -15,7 +15,7 @@ def room(request, room):
     newroom = request.GET.get('newroom')
     room_details = Room.objects.get(name=room)
 
-    return render(request, 'room.html', {
+    return render(request, 'chatbotpages/room.html', {
         'username': username,
         'room': room,
         'room_details': room_details,

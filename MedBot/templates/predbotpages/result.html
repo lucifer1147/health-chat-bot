@@ -1,0 +1,75 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <title>PredBot Result</title>
+</head>
+<link rel="icon" type="image/x-icon" href="{% static 'images/favicon/favicon.ico' %}">
+<link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+<body>
+<header>
+ <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+   <b class="navbar-brand">MedBot</b>
+   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+   </button>
+   <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="nav nav-pills justify-content-center">
+     <li class="nav-item">
+      <a class="nav-link" href="/">Home</a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link {{ cb_active }}" href="/ChatBot">ChatBot</a>
+     </li>
+     <li class="nav-item">
+      <a class="nav-link {{ pb_active }}" href="/PredBot">PredBot</a>
+     </li>
+    </ul>
+   </div>
+  </div>
+ </nav>
+</header>
+
+
+<main class="d-flex mx-5 px-5 mt-5 pt-5 flex-column">
+ <h4 class="mt-3">Results:</h4>
+ <div class="mt-3 mb-1">{{ content }}<br>If you wish to know more about the disease(s), You may visit <a
+   href="/ChatBot/">ChatBot</a>
+  and resolve any further queries there.
+ </div>
+ <div class="my-1">Click <a href="0">here</a> if you wish to try again.</div>
+
+
+ <div class="accordion mt-4" id="symptomsInputAccordion">
+  <div class="accordion-item">
+   <h2 class="accordion-header">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#symptomsInputAccordion-collapseOne" aria-expanded="false"
+            aria-controls="flush-collapseOne">
+     <strong>Symptoms Entered:</strong>
+    </button>
+   </h2>
+   <div id="symptomsInputAccordion-collapseOne" class="accordion-collapse collapse"
+        data-bs-parent="#symptomsInputAccordion">
+    <div class="accordion-body">
+     <ul>
+      {% for symptom in symptoms_input %}
+       <li>{{ symptom }}</li>
+      {% endfor %}
+     </ul>
+    </div>
+   </div>
+  </div>
+ </div>
+</main>
+
+<script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+</html>
